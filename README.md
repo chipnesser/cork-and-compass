@@ -73,3 +73,11 @@ Open an issue or a small pull request with a clear explanation. Preserve the wel
 Educational project. Wine descriptions describe common tendencies rather than guarantees; producers, vintages and individual bottles vary.
 
 Code and original project assets are available under the [MIT License](LICENSE). Retained third-party code keeps its own notices; see [third-party notices](THIRD_PARTY_NOTICES.md).
+
+## Curiosity, not compulsion
+
+Optional vistas, field assignments and rest invitations live in `lib/experiences.ts`; reusable types live in `lib/model.ts`. Lessons reference vistas through `vistaIds`. The full-screen viewer and untracked field assignments live in `components/quiet-moments.tsx`.
+
+All eight vistas currently use an original, explicitly labeled abstract placeholder, not regional photography. To curate a photograph, update its image, meaningful alt text, caption, photographer, source, license and source URL together, verify permission for redistribution, and set `placeholder` to false. No random web photography is fetched.
+
+Fern offers a rest note after every three newly completed lessons within a visit. Reloading starts a new visit; there are no streaks, timers, deadlines, points or lost-progress penalties. Rest is always available after a lesson. Field assignments have no completion status or verification. Neither viewing, sharing nor resting affects prerequisites or tasting unlocks.

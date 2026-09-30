@@ -1,11 +1,12 @@
 import {graph,chapters,paths} from './graph.ts';
+import {experiences} from './experiences.ts';
 import {content} from './content.ts';
 import type {Lesson, Progress, Axis} from './model.ts';
 export type * from './model.ts';
 export {chapters,paths};
 export const lessons:Lesson[]=graph.map(node=>{
  if(!content[node.id])throw new Error(`Missing content for ${node.id}`);
- return {...node,...content[node.id]};
+ return {...node,...content[node.id],...experiences[node.id]};
 });
 export const byId:Record<string,Lesson>=Object.fromEntries(lessons.map(l=>[l.id,l]));
 export const completeIds=(p:Progress)=>lessons.filter(l=>p[l.id]?.completed).map(l=>l.id);

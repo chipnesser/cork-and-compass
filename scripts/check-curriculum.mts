@@ -1,3 +1,4 @@
+import {experiences,vistas,restSuggestion} from '../lib/experiences.ts';
 import assert from 'node:assert/strict';
 import {lessons,byId,chapters,paths,isOpen,completeIds,tastingCount,connectionIds,suggested} from '../lib/curriculum.ts';
 import {tastings} from '../lib/tastings.ts';
@@ -64,3 +65,15 @@ let data:string|null=null;const storage={getItem:()=>data,setItem:(_key:string,v
 updateLocal(storage,s=>recordAnswer(s,'welcome',0,1));assert.equal(readLocal(storage).progress.welcome.answers[0],1);
 const kept=data;assert.throws(()=>updateLocal({getItem:()=>data,setItem:()=>{throw new Error('Quota')}},s=>recordAnswer(s,'welcome',1,1)));assert.equal(data,kept);
 console.log('PASS schema, graph joins, blocked prerequisites, local persistence, retry/conflict handling, corrupt-storage protection, legacy migration, storage failure.');
+
+// Quiet experiences are valid optional content, never gates or progress records.
+for(const [id,experience] of Object.entries(experiences)){
+ assert.ok(byId[id],`Unknown experience lesson ${id}`);
+ for(const vistaId of experience.vistaIds||[]){
+  const vista=vistas[vistaId];assert.ok(vista,`Unknown vista ${vistaId}`);
+  for(const field of ['image','alt','caption','photographer','source','license','sourceUrl'] as const)assert.ok(vista[field]);
+ }
+}
+assert.equal(restSuggestion(0),undefined);assert.equal(restSuggestion(2),undefined);
+assert.ok(restSuggestion(3));assert.equal(restSuggestion(4),undefined);assert.ok(restSuggestion(6));
+console.log('PASS optional vistas and attribution, experience references, session-only rest cadence.');
