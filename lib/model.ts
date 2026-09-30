@@ -17,7 +17,8 @@ export type LessonProgress = { answers: number[]; completed: boolean; revision: 
 export type Progress = Record<string, LessonProgress>;
 export type TastingState = 'unlocked' | 'available' | 'completed';
 export type TastingProgress = Record<string, {status:TastingState; updatedAt:string}>;
-export type SavedState = {version:2; progress:Progress; tastings:TastingProgress; legacy?:unknown; migrationChecked:boolean; completionOrder:string[]; milestones:Record<string,{templateId:string; earnedAfter:string[]}>};
+export type CoreCompletion = {completedAt:string; celebrationSeen:boolean};
+export type SavedState = {coreCompletion?:CoreCompletion; version:2; progress:Progress; tastings:TastingProgress; legacy?:unknown; migrationChecked:boolean; completionOrder:string[]; milestones:Record<string,{templateId:string; earnedAfter:string[]}>};
 export type Tasting = {id:string; number:number; title:string; axis:Axis; wines:string[]; concept:string; prompts:string[]; preparation:string; relatedLessons:string[]};
 
 export type Vista = {

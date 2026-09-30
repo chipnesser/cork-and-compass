@@ -45,6 +45,11 @@ export function parseState(raw:string|null):SavedState{
   const id=`token-${n}`,v=value.tastings[id];
   if(object(v)&&['unlocked','available','completed'].includes(String(v.status)))state.tastings[id]={status:v.status as TastingState,updatedAt:typeof v.updatedAt==='string'?v.updatedAt:''};
  }
+ if(completeIds(state.progress).length===40&&object(value.coreCompletion)){
+  const badge=value.coreCompletion;
+  if(typeof badge.completedAt!=='string'||!Number.isFinite(Date.parse(badge.completedAt)))throw new Error('The completion date needs recovery. Your original progress has not been overwritten.');
+  state.coreCompletion={completedAt:badge.completedAt,celebrationSeen:badge.celebrationSeen===true};
+ }
  return reconcile(state);
 }
 export function importLegacy(state:SavedState,legacy:unknown):SavedState{
@@ -69,7 +74,7 @@ export function recordAnswer(state:SavedState,id:string,index:number,answer:numb
  const next=structuredClone(state);const updated=[...answers,answer];
  next.progress[id]={answers:updated,completed:updated.length===4,revision:2};
  if(updated.length===4)next.completionOrder.push(id);
- return reconcile(next);
+ return awardCoreCompletion(reconcile(next));
 }
 export function recordTasting(state:SavedState,id:string,status:TastingState):SavedState{
  const n=Number(id.replace('token-',''));
@@ -85,4 +90,15 @@ export function updateLocal(storage:LocalStore,update:(state:SavedState)=>SavedS
  const next=update(readLocal(storage));
  try{storage.setItem(STORAGE_KEY,JSON.stringify(next))}catch{throw new Error('This browser could not save progress. Your answer is still here; allow local storage or free space, then retry.');}
  return next;
+}
+
+// Additive v2 migration: old progress stays intact. Older learners receive the
+// date their completed trail is first recognized; no historical date is guessed.
+export function awardCoreCompletion(state:SavedState,now=new Date().toISOString()):SavedState{
+ if(state.coreCompletion||completeIds(state.progress).length!==40)return state;
+ return {...state,coreCompletion:{completedAt:now,celebrationSeen:false}};
+}
+export function acknowledgeCoreCompletion(state:SavedState):SavedState{
+ if(!state.coreCompletion)return state;
+ return {...state,coreCompletion:{...state.coreCompletion,celebrationSeen:true}};
 }
