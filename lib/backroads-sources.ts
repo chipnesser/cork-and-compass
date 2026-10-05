@@ -1,0 +1,25 @@
+// Backroads editorial references checked 2026-10-04. Style summaries are tendencies.
+// Hospitality advice is original; no demographic statistics or live rankings are claimed.
+export const backroadsSources:Record<string,{title:string;url:string}>={
+ 'br-rhone':{title:'Inter Rhône — Grape varieties',url:'https://www.vins-rhone.com/en/rhone-valley-vineyards/grape-varieties'},
+ 'br-shiraz':{title:'Wine Australia — Australian Shiraz educator guide',url:'https://www.wineaustralia.com/getmedia/f220146a-37c7-47fc-ae4c-67ca2c6917f4/AusWine_SHIRAZ_Educators_Guide_FA2.pdf?ext=.pdf'},
+ 'br-georgia':{title:'Georgian National Wine Agency — Qvevri Wine',url:'https://wine.gov.ge/En/KvevriWine'},
+ 'br-1855':{title:'Bordeaux Wine Council — Classification of 1855',url:'https://www.bordeaux.com/fr/classements/classement-1855/'},
+ 'br-finger-lakes':{title:'Finger Lakes Wine Alliance — Terroir',url:'https://fingerlakeswinealliance.com/trade/terroir/'},
+ 'br-napa':{title:'Napa Valley Vintners — Climate',url:'https://napavintners.com/napa_valley/science/climate/'},
+ 'br-sonoma':{title:'Sonoma County Vintners — Sonoma County Wine',url:'https://sonomawine.com/sonoma-county-wine/'},
+ 'br-port':{title:'Douro and Port Wine Institute — Port introduction',url:'https://www.ivdp.pt/en/wines/port-wines/introduction'},
+ 'br-madeira':{title:'H. M. Borges — Madeira production methods',url:'https://hmborges.lojasonlinectt.pt/page/metodos-de-producao'},
+ 'br-sideways':{title:'Cuellar, Karnowsky and Acosta — The Sideways Effect (AAWE working paper)',url:'https://ageconsearch.umn.edu/record/44086/files/AAWE_WP25.pdf'},
+ 'br-bordeaux-trade':{title:'Bordeaux Wine Council — The wine merchant',url:'https://www.bordeaux.com/en/professions/wine-merchant/'},
+ 'br-albarino':{title:'Rías Baixas Wine Council — Albariño',url:'https://www.riasbaixaswines.com/'},
+ 'br-pinot-blanc':{title:'Alsace Wine Council — Pinot Blanc',url:'https://www.vinsalsace.com/fr/gouts-et-couleurs/cepages/light-or-full-bodied/pinot-blanc-dalsace/'},
+ 'br-verdejo':{title:'Rueda Wine Council — Verdejo',url:'https://dorueda.com/verdejo/'},
+ 'br-service':{title:'WSET — Serving and decanting wine',url:'https://www.wsetglobal.com/knowledge-centre/blog/2024/july/21/frequently-asked-questions-about-serving-and-decanting-wine/'},
+ 'br-trade':{title:'US TTB — Wholesaler, importer and exporter overview',url:'https://www.ttb.gov/regulated-commodities/beverage-alcohol/wholesaler'},
+ 'br-organic':{title:'USDA — Organic wine oversight, labeling and trade',url:'https://www.ams.usda.gov/publications/content/organic-wine-oversight-labeling-trade'},
+ 'br-demeter':{title:'Demeter USA — Biodynamic certification',url:'https://demeter-usa.org/demeter-biodynamic-certification/'},
+ 'br-champagne':{title:'Comité Champagne — Frequently asked questions',url:'https://www.champagne.fr/en/champagne-frequently-asked-questions'},
+ 'br-growers':{title:'Comité Champagne — Champagne winegrowers',url:'https://www.champagne.fr/en/find-out-more/champagne-industry/the-champagne-growers'},
+ 'br-champagne-blending':{title:'Comité Champagne — Blending',url:'https://www.champagne.fr/index.php/en/about-champagne/how-champagne-is-made/blending-champagne'},
+};

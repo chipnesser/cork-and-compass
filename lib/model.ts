@@ -2,7 +2,7 @@ export type Axis = 'place' | 'grape' | 'technique';
 export type Prerequisites = { all: string[]; any: string[] };
 export type Question = { prompt: string; options: string[]; correct: number; why: string };
 export type LessonNode = {
-  id: string; title: string; chapter: number; axis: Axis;
+  id: string; title: string; chapter: number; axis: Axis; collection?: 'core' | 'backroads';
   secondaryConnections: Axis[]; prerequisites: Prerequisites;
   relatedLessons: string[]; tastingConnections: string[];
   kind: 'lesson' | 'scenario'; revision: number;

@@ -2,7 +2,7 @@
 import {useEffect,useRef} from 'react';
 import type {CoreCompletion} from '../lib/model';
 
-export function CoreCompletionDialog({badge,onClose,error}:{badge:CoreCompletion;onClose:()=>void;error:string}){
+export function CoreCompletionDialog({badge,onClose,onExplore,error}:{badge:CoreCompletion;onClose:()=>void;onExplore?:()=>void;error:string}){
  const dialog=useRef<HTMLDialogElement>(null);
  const celebrate=!badge.celebrationSeen;
  useEffect(()=>{
@@ -23,6 +23,7 @@ export function CoreCompletionDialog({badge,onClose,error}:{badge:CoreCompletion
     <p className="core-date">Completed <time dateTime={badge.completedAt}>{new Date(badge.completedAt).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}</time></p>
    </section>
    <p className="core-keepsake">Your badge is saved with your field notes. Find it anytime on My journey.</p>
+   {onExplore&&<div className="core-backroads-invite"><span className="eyebrow">BACKROADS — 20 MORE PLACES WORTH GETTING LOST.</span><p>You finished the course. Everything from here is because you’re curious.</p><button className="text-button" onClick={onExplore}>Take a look at Backroads <span aria-hidden="true">↗</span></button></div>}
    {error&&<p role="alert">{error}</p>}
    <button autoFocus className="primary" onClick={onClose}>{celebrate?'A very good place to pause':'Back to my journey'}</button>
   </div>

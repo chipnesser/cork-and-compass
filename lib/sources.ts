@@ -1,5 +1,7 @@
+import {backroadsSources} from './backroads-sources.ts';
 // Editorial reference ledger, reviewed 2026-09-29. Hospitality scenarios are original.
 export const sources:Record<string,{title:string;url:string}>={
+ ...backroadsSources,
  wine:{title:'WSET — What is wine?',url:'https://www.wsetglobal.com/knowledge-centre/blog/2021/december/14/what-is-wine'},
  styles:{title:'WSET — Wine types and styles',url:'https://www.wsetglobal.com/knowledge-centre/blog/2023/october/03/how-many-wine-types-and-styles-are-there'},
  acidity:{title:'WSET — Understanding acidity',url:'https://www.wsetglobal.com/knowledge-centre/blog/2026/understanding-acidity-in-wine'},

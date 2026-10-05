@@ -2,13 +2,13 @@
 
 A friendly, game-like wine education app for restaurant servers.
 
-Follow Fern, your mildly overenthusiastic field guide, through 40 interconnected lessons of about five minutes each. Explore through **Place**, **Grape**, or **Technique**, building practical wine confidence rather than sommelier credentials.
+Follow Fern, your mildly overenthusiastic field guide, through 40 interconnected core lessons of about five minutes each. Completing the core trail opens Backroads: 20 optional detours. Explore through **Place**, **Grape**, or **Technique**, building practical wine confidence rather than sommelier credentials.
 
 Every five completed lessons unlocks an optional real-world guided tasting at your restaurant. Tastings reinforce the field notes and never block digital progress.
 
 ## Current Status
 
-**Cork & Compass Beta 0.1.0** — public beta / early prototype. The curriculum is ready for feedback; it has no formal certification or professional wine-education accreditation.
+**Cork & Compass v3.0 — Backroads** — development preview. The curriculum is ready for feedback; it has no formal certification or professional wine-education accreditation.
 
 ## Getting Started
 
@@ -81,3 +81,13 @@ Optional vistas, field assignments and rest invitations live in `lib/experiences
 All eight vistas currently use an original, explicitly labeled abstract placeholder, not regional photography. To curate a photograph, update its image, meaningful alt text, caption, photographer, source, license and source URL together, verify permission for redistribution, and set `placeholder` to false. No random web photography is fetched.
 
 Fern offers a rest note after every three newly completed lessons within a visit. Reloading starts a new visit; there are no streaks, timers, deadlines, points or lost-progress penalties. Rest is always available after a lesson. Field assignments have no completion status or verification. Neither viewing, sharing nor resting affects prerequisites or tasting unlocks.
+
+## Backroads (v3.0)
+
+**The original 40 teach you how to navigate wine. Backroads teaches you where things get interesting.**
+
+Backroads is hidden until all 40 core lessons are complete. All 20 detours then open together, with a separate count; completing the original trail still means completing Cork & Compass. The existing core badge, completion date and eight tasting rewards are unchanged. There is no Backroads credential or extra tasting currency.
+
+`lib/backroads.ts` contains the 20 lessons and four editorial groups. `lib/backroads-sources.ts` records references. `components/backroads.tsx` renders the optional trail; quizzes and answers use the existing lesson UI and storage. The `br-` IDs keep the new records separate from the original IDs. `lessons`/`completeIds` remain core-only, while `allLessons`/`byId` provide a shared registry. No storage-key change or reset is required. Older deployed clients do not understand Backroads IDs, so do not run an old client against the same browser storage after rollout.
+
+Run `npm test` for core regression, badge persistence, unlock boundaries, old-save compatibility, and all 80 Backroads questions. See [the v3.0 handoff](docs/BACKROADS-V3.md) for scope and review notes.
